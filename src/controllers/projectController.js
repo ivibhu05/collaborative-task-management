@@ -17,6 +17,17 @@ async function createProject(req, res) {
   }
 }
 
+async function getAllProjects(req, res) {
+  try {
+    const projects = await projectService.getAllProjects();
+    res.status(200).json(projects);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
+
 module.exports = {
   createProject,
+  getAllProjects,
 };

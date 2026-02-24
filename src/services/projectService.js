@@ -35,6 +35,12 @@ async function createProject(name, ownerId) {
   }
 }
 
+async function getAllProjects() {
+  const result = await pool.query("SELECT * FROM projects");
+  return result.rows;
+}
+
 module.exports = {
   createProject,
+  getAllProjects,
 };
